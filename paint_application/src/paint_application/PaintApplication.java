@@ -1,6 +1,8 @@
 package paint_application;
 
 import java.awt.EventQueue;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -30,6 +32,7 @@ public class PaintApplication {
 	Rectangle re;
 	Line li;
 	int kind = 1;
+	boolean mag = false;
 	Color cl = Color.BLACK;
 
 	public static void main(int userId) {
@@ -38,7 +41,7 @@ public class PaintApplication {
 				try {
 					PaintApplication window = new PaintApplication(userId);
 					window.frame.setVisible(true);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -168,6 +171,20 @@ public class PaintApplication {
 						e.printStackTrace();
 					}
 					break;
+
+				case 4:
+					if (mag) {
+						Graphics g = panel.getGraphics();
+						g.setColor(Color.white);
+						g.clearRect(0, 0, 1000, 1000);
+						Shape.scaling(mYuserID, panel.getGraphics(),
+								arg0.getX(), arg0.getY(), 100);
+					} else {
+						Graphics g = panel.getGraphics();
+						g.setColor(Color.white);
+						g.clearRect(0, 0, 1000, 1000);
+						Shape.getAllshapes(mYuserID, panel.getGraphics());
+					}
 				default:
 					break;
 				}
@@ -274,17 +291,32 @@ public class PaintApplication {
 		bgroup.add(redBut);
 		bgroup.add(blueBut);
 		bgroup.add(greenBut);
-		
-		JButton colorBut = new JButton("\u062A\u063A\u06CC\u06CC\u0631 \u0631\u0646\u06AF");
+
+		JButton colorBut = new JButton(
+				"\u062A\u063A\u06CC\u06CC\u0631 \u0631\u0646\u06AF");
 		colorBut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		colorBut.setBounds(538, 205, 89, 41);
 		frame.getContentPane().add(colorBut);
-		
-		JButton zoomBut = new JButton("\u0628\u0632\u0631\u06AF \u0646\u0645\u0627\u06CC\u06CC");
+
+		JButton zoomBut = new JButton(
+				"\u0628\u0632\u0631\u06AF \u0646\u0645\u0627\u06CC\u06CC");
+		zoomBut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				kind = 4;
+				if (mag)
+					mag = false;
+				else
+					mag = true;
+				// Graphics g = panel.getGraphics();
+				// g.setColor(Color.white);
+				// g.fillOval(0, 0, 1000, 1000);
+				// Shape.scaling(mYuserID, panel.getGraphics(), 250, 200, 100);
+			}
+		});
 		zoomBut.setBounds(538, 275, 89, 41);
 		frame.getContentPane().add(zoomBut);
 	}
