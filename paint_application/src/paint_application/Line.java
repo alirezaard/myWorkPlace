@@ -1,6 +1,5 @@
 package paint_application;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.sql.SQLException;
 

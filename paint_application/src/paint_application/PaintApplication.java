@@ -19,7 +19,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.nio.file.WatchEvent.Kind;
 import java.sql.SQLException;
 import java.awt.event.MouseMotionAdapter;
 
@@ -275,6 +274,18 @@ public class PaintApplication {
 		bgroup.add(redBut);
 		bgroup.add(blueBut);
 		bgroup.add(greenBut);
+		
+		JButton colorBut = new JButton("\u062A\u063A\u06CC\u06CC\u0631 \u0631\u0646\u06AF");
+		colorBut.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
+		colorBut.setBounds(538, 205, 89, 41);
+		frame.getContentPane().add(colorBut);
+		
+		JButton zoomBut = new JButton("\u0628\u0632\u0631\u06AF \u0646\u0645\u0627\u06CC\u06CC");
+		zoomBut.setBounds(538, 275, 89, 41);
+		frame.getContentPane().add(zoomBut);
 	}
-
 }

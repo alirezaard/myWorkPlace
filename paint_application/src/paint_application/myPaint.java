@@ -6,6 +6,11 @@ import java.awt.Graphics;
 import javax.swing.JPanel;
 
 public class myPaint extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void drawCircle(Color clStr, int center_x, int center_y,
 			int raduse1, int raduse2, Graphics g) {
 

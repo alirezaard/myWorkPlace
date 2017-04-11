@@ -106,4 +106,26 @@ public class ShapeEntityManager {
 		conn.close();
 		return mylist;
 	}
+	
+	static protected void serachPointsAndUpdate(int sx, int sy, int ex, int ey,String color)
+		      throws ClassNotFoundException, SQLException {
+
+		    Connection conn = null;
+		    Statement stmt = null;
+
+		    Class.forName("com.mysql.jdbc.Driver");
+		    // STEP 3: Open a connection
+		    conn = DriverManager.getConnection(DB_URL, USER, PASS);
+		    // STEP 4: Execute a query
+		    stmt = conn.createStatement();
+		    String sql;
+		    sql = "UPDATE paint.shape SET shp_color='"+ color+"' where shp_p1x <= " + sx
+		        + " AND shp_p1y<=" + sy + " AND shp_p2x<=" + ex+ " AND shp_p2y<=" + ey + ";";
+		    ResultSet rs = stmt.executeQuery(sql);
+
+		    rs.close();
+		    stmt.close();
+		    conn.close();
+		  }
+		
 }
